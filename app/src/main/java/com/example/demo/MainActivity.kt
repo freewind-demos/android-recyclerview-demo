@@ -39,19 +39,17 @@ class MainActivity : AppCompatActivity() {
         // 创建 RecyclerView 控件
         val recyclerView = RecyclerView(this).apply {
             id = View.generateViewId()
-        }
+            // 设置布局管理器为网格布局（2列）
+            layoutManager = GridLayoutManager(this@MainActivity, 2)
 
-        // 设置布局管理器为网格布局（2列）
-        layoutManager = GridLayoutManager(this, 2)
-
-        // 创建并设置适配器
-        adapter = MyAdapter(dataList) { item ->
-            // 处理点击事件
-            Toast.makeText(
-                this@MainActivity,
-                "点击了: $item",
-                Toast.LENGTH_SHORT
-            ).show()
+            // 创建并设置适配器
+            adapter = MyAdapter(dataList) { item ->
+                Toast.makeText(
+                    this@MainActivity,
+                    "点击了: $item",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
 
         // 将 RecyclerView 添加到根布局
